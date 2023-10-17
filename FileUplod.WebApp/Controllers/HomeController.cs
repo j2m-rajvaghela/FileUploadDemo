@@ -20,18 +20,18 @@ namespace FileUplod.WebApp.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(FileUploadViewModel model)
+        public async Task<IActionResult> Index(FileUploadViewModel viewModel)
         {
-            if (model.File == null || model.File.Length == 0)
+            if (viewModel.File == null || viewModel.File.Length == 0)
             {
                 ModelState.AddModelError("File", "Please select a file");
-                return View(model);
+                return View(viewModel);
             }
             using (var memoryStream = new MemoryStream())
             {
-                await model.File.CopyToAsync(memoryStream);
+                await viewModel.File.CopyToAsync(memoryStream);
                 var fileBytes = memoryStream.ToArray();
-                var fileName = model.File.FileName;
+                var fileName = viewModel.File.FileName;
                 await _fileRepository.UplodFile(fileBytes, fileName);
             }
             return RedirectToAction("UploadSuccess");
