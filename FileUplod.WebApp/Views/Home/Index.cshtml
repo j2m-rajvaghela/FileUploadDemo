@@ -6,17 +6,6 @@
 
 <h2>File Upload</h2>
 
-
-@* @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <div class="form-group">
-        @Html.LabelFor(f => f.File, new { @class = "control-label"});
-        @Html.TextBoxFor(f => f.File, new { @class = "form-control", type = "file"})
-        @Html.ValidationMessageFor(f => f.File,"", new { @class = "text-danger"})
-    </div>
-} *@
-
-
 <form asp-action="Index" asp-controller="Home" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
@@ -28,3 +17,12 @@
     <button type="submit" class="btn btn-primary">Upload</button>
 
 </form>
+
+@* @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.File, new { @class = "control-label"});
+        @Html.TextBoxFor(f => f.File, new { @class = "form-control", type = "file"})
+        @Html.ValidationMessageFor(f => f.File,"", new { @class = "text-danger"})
+    </div>
+} *@
